@@ -10,18 +10,20 @@ import {ERC1155PausableUpgradeable} from
 import {ERC1155SupplyUpgradeable} from
     "@openzeppelin/contracts-upgradeable/token/ERC1155/extensions/ERC1155SupplyUpgradeable.sol";
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
+import {Ownable2StepUpgradeable} from "@openzeppelin/contracts-upgradeable/access/Ownable2StepUpgradeable.sol";
 import {UUPSUpgradeable} from "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 
 contract HelixboxBadge is
     Initializable,
     ERC1155Upgradeable,
-    OwnableUpgradeable,
+    Ownable2StepUpgradeable,
     ERC1155PausableUpgradeable,
     ERC1155BurnableUpgradeable,
     ERC1155SupplyUpgradeable,
     UUPSUpgradeable
 {
+    function _authorizeUpgrade(address newImplementation) internal override onlyOwner {}
+
     /// @custom:oz-upgrades-unsafe-allow constructor
     constructor() {
         _disableInitializers();
@@ -58,8 +60,6 @@ contract HelixboxBadge is
     {
         _mintBatch(to, ids, amounts, data);
     }
-
-    function _authorizeUpgrade(address newImplementation) internal override onlyOwner {}
 
     // The following functions are overrides required by Solidity.
 
