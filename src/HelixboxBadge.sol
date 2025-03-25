@@ -9,8 +9,6 @@ import {ERC1155PausableUpgradeable} from
     "@openzeppelin/contracts-upgradeable/token/ERC1155/extensions/ERC1155PausableUpgradeable.sol";
 import {ERC1155SupplyUpgradeable} from
     "@openzeppelin/contracts-upgradeable/token/ERC1155/extensions/ERC1155SupplyUpgradeable.sol";
-import {ERC1155URIStorageUpgradeable} from
-    "@openzeppelin/contracts-upgradeable/token/ERC1155/extensions/ERC1155URIStorageUpgradeable.sol";
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import {Ownable2StepUpgradeable} from "@openzeppelin/contracts-upgradeable/access/Ownable2StepUpgradeable.sol";
 import {UUPSUpgradeable} from "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
@@ -22,7 +20,6 @@ contract HelixboxBadge is
     ERC1155PausableUpgradeable,
     ERC1155BurnableUpgradeable,
     ERC1155SupplyUpgradeable,
-    ERC1155URIStorageUpgradeable,
     UUPSUpgradeable
 {
     function _authorizeUpgrade(address newImplementation) internal override onlyOwner {}
@@ -41,25 +38,8 @@ contract HelixboxBadge is
         __UUPSUpgradeable_init();
     }
 
-    function uri(uint256 tokenId)
-        public
-        view
-        override(ERC1155Upgradeable, ERC1155URIStorageUpgradeable)
-        returns (string memory)
-    {
-        return super.uri(tokenId);
-    }
-
     function setURI(string memory newuri) public onlyOwner {
         _setURI(newuri);
-    }
-
-    function setURI(uint256 tokenId, string memory tokenURI) public onlyOwner {
-        _setURI(tokenId, tokenURI);
-    }
-
-    function setBaseURI(string memory baseURI) public onlyOwner {
-        _setBaseURI(baseURI);
     }
 
     function pause() public onlyOwner {
