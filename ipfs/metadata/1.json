@@ -1,6 +1,8 @@
 {
+  "id": 1,
 	"name": "WAGMI Seed",
 	"description": "Your Smart Account, Your Easy DeFi Gateway!
 WAGMI Seed is the first badge you earn when joining Helixbox. By registering your smart account and exploring its features, you plant the seed of your DeFi journey. This is where every great story starts — WAGMI!",
-	"image": "https:\/\/s3.amazonaws.com\/your-bucket\/images\/{id}.png"
+	"image": "ipfs://bafybeiaeuqgjahmwavdyi4f7xyf5mr54jrqnu3xslztjyujtnn4fii6cge/WAGMI Seed.png",
+  "animation_url": "ipfs://bafybeiaeuqgjahmwavdyi4f7xyf5mr54jrqnu3xslztjyujtnn4fii6cge/WAGMI Seed.mp4"
 }
